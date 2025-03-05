@@ -12,6 +12,14 @@ def key_events(event):
 		User.playing = False
 	if event.key == pygame.K_f:
 		User.change_showfps()
+	if event.key == pygame.K_w:
+		User.change_direction(0, -1)
+	if event.key == pygame.K_d:
+		User.change_direction(1, 0)
+	if event.key == pygame.K_s:
+		User.change_direction(0, 1)
+	if event.key == pygame.K_a:
+		User.change_direction(-1, 0)
 
 def search_events():
 	for event in pygame.event.get():
@@ -19,3 +27,4 @@ def search_events():
 			key_events(event)
 		if event.type == pygame.QUIT:
 			User.playing = False
+	User.check_movement()
