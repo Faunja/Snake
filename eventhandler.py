@@ -27,4 +27,4 @@ def search_events():
 			key_events(event)
 		if event.type == pygame.QUIT:
 			User.playing = False
-	User.check_movement()
+	Grid.check_grid_events()
