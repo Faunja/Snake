@@ -7,9 +7,11 @@ import pygame
 pygame.init()
 DISPLAYSURF = pygame.display.get_desktop_sizes()
 ScreenWidth, ScreenHeight = DISPLAYSURF[0]
-SizeDifference = 3/4
+SizeDifference = 3 / 4
+informationSize = 9 / 10
 ScreenWidth = round(ScreenHeight * SizeDifference)
-ScreenHeight = round(ScreenHeight * SizeDifference)
+ScreenHeight = round(ScreenHeight * SizeDifference / informationSize)
+HeightDifference = ScreenHeight - ScreenHeight * informationSize
 screen = pygame.display.set_mode((ScreenWidth, ScreenHeight))
 
 Black = (0, 0, 0)

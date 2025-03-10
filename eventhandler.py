@@ -12,6 +12,9 @@ def key_events(event):
 		User.playing = False
 	if event.key == pygame.K_f:
 		User.change_showfps()
+	if event.key == pygame.K_r:
+		User.set_user()
+		Grid.set_grid()
 	if event.key == pygame.K_w:
 		User.change_direction(0, -1)
 	if event.key == pygame.K_d:

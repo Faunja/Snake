@@ -29,8 +29,10 @@ class definetail:
 			return ((0, 0), (1, 0))
 
 class defineuser:
-	def __init__(self):
+	def set_user(self):
 		self.playing = True
+		self.lose = False
+		self.win = False
 		self.showfps = False
 		
 		self.position = [0, 0]
@@ -40,10 +42,17 @@ class defineuser:
 		self.tailSize = 3
 		self.tail = []
 
+	def __init__(self):
+		self.set_user()
+
 	def change_showfps(self):
 		self.showfps = change_TrueFalse(self.showfps)
 	
 	def change_direction(self, x, y):
+		if self.direction[0] == -x:
+			return
+		if self.direction[1] == -y:
+			return
 		self.direction = (x, y)
 	
 	def adjust_tail(self):

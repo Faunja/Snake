@@ -12,9 +12,9 @@ class defineapple:
 		self.point = 1
 
 class definegrid:
-	def __init__(self):
+	def set_grid(self):
 		self.width = 20
-		self.height = round(ScreenHeight / ScreenWidth * self.width)
+		self.height = round((ScreenHeight * informationSize) / ScreenWidth * self.width)
 		self.cellSize = ScreenWidth / self.width
 
 		self.maxApples = 1
@@ -22,7 +22,10 @@ class definegrid:
 
 		self.speed = 4
 		self.time = 1
-
+		
+	def __init__(self):
+		self.set_grid()
+	
 	def create_apple(self):
 		checkPosition = True
 		while checkPosition:
@@ -64,13 +67,21 @@ class definegrid:
 
 	def game_over(self):
 		if self.check_wall_collision() == True or self.check_tail_collision() == True:
-			User.playing = False
+			User.lose = True
 			return
 		User.movement()
-		
+	
+	def game_win(self):
+		if User.tailSize + User.score + 1 == self.width * self.height:
+			User.win = True
+			self.maxApples = 0
+	
 	def check_grid_events(self):
+		if User.lose == True or User.win == True:
+			return
 		if self.time >= FPS / self.speed:
 			self.game_over()
+			self.game_win()
 			self.check_apples()
 			if self.maxApples != len(self.apples):
 				self.create_apple()
