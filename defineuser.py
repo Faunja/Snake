@@ -37,6 +37,7 @@ class defineuser:
 		
 		self.position = [0, 0]
 		self.direction = (1, 0)
+		self.newDirection = (1, 0)
 		
 		self.score = 0
 		self.tailSize = 3
@@ -53,7 +54,7 @@ class defineuser:
 			return
 		if self.direction[1] == -y:
 			return
-		self.direction = (x, y)
+		self.newDirection = (x, y)
 	
 	def adjust_tail(self):
 		for currentTail in range(len(self.tail) - 1, -1, -1):

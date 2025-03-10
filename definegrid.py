@@ -80,6 +80,7 @@ class definegrid:
 		if User.lose == True or User.win == True:
 			return
 		if self.time >= FPS / self.speed:
+			User.direction = User.newDirection
 			self.game_over()
 			self.game_win()
 			self.check_apples()
